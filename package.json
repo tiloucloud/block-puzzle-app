@@ -1,0 +1,15 @@
+{
+  "name": "block-puzzle-app",
+  "version": "1.0.0",
+  "description": "Block Puzzle game wrapped as Android app with AdMob ads",
+  "scripts": {
+    "sync": "npx cap sync android",
+    "open:android": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor-community/admob": "^6.2.0",
+    "@capacitor/android": "^6.2.1",
+    "@capacitor/cli": "^6.2.1",
+    "@capacitor/core": "^6.2.1"
+  }
+}
