@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "android/app/build.gradle"
+    namespace "com.galaxyadventurestudio.blockpuzzle"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.galaxyadventurestudio.blockpuzzle"
