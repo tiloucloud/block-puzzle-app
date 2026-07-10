@@ -4,7 +4,7 @@ android {
     namespace "com.yourname.blockpuzzle"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.yourname.blockpuzzle"
+        applicationId "com.galaxyadventurestudio.blockpuzzle"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
