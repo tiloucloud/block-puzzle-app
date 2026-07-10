@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">Block Puzzle</string>
     <string name="title_activity_main">Block Puzzle</string>
-    <string name="package_name">com.yourname.blockpuzzle</string>
-    <string name="custom_url_scheme">com.yourname.blockpuzzle</string>
+    <string name="package_name">com.galaxyadventurestudio.blockpuzzle</string>
+    <string name="custom_url_scheme">com.galaxyadventurestudio.blockpuzzle</string>
 </resources>
