@@ -1,4 +1,4 @@
-package com.yourname.blockpuzzle;
+package com.galaxyadventurestudio.blockpuzzle;
 
 import com.getcapacitor.BridgeActivity;
 
