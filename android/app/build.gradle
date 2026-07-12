@@ -16,10 +16,38 @@ android {
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    // ADMOB/SIGNING: release builds are signed using a keystore.
+    // In CI (GitHub Actions), these values come from environment variables
+    // set from GitHub Secrets — see .github/workflows/build-release-aab.yml.
+    // Locally, you can instead create android/keystore.properties with the
+    // same 4 keys and this file will pick it up automatically.
+    def keystorePropertiesFile = rootProject.file("keystore.properties")
+    def keystoreProperties = new Properties()
+    if (keystorePropertiesFile.exists()) {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    }
+    def ksStoreFile = keystoreProperties['storeFile'] ?: System.getenv("RELEASE_STORE_FILE")
+    def ksStorePassword = keystoreProperties['storePassword'] ?: System.getenv("RELEASE_STORE_PASSWORD")
+    def ksKeyAlias = keystoreProperties['keyAlias'] ?: System.getenv("RELEASE_KEY_ALIAS")
+    def ksKeyPassword = keystoreProperties['keyPassword'] ?: System.getenv("RELEASE_KEY_PASSWORD")
+
+    signingConfigs {
+        release {
+            if (ksStoreFile != null) {
+                storeFile file(ksStoreFile)
+                storePassword ksStorePassword
+                keyAlias ksKeyAlias
+                keyPassword ksKeyPassword
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (ksStoreFile != null) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 }
